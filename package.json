@@ -2,9 +2,9 @@
   "name": "alternative-backend",
   "version": "1.0.0",
   "description": "Backend for alternative web-portal.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vladimir Budovkin",
@@ -13,6 +13,7 @@
     "ejs": "2.6.1",
     "express": "4.16.4",
     "express-fileupload": "1.1.4",
+    "mysql": "2.16.0",
     "nodemailer": "6.0.0",
     "path": "0.12.7"
   }
