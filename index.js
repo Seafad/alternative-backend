@@ -43,7 +43,7 @@ app.post('/processMissingRequest', function (req, res){
           from: '"Alternative Automated" <no-reply@yandex.ru>', // sender address
           to: req.body.email, // list of receivers
           subject: "Поступила новая заявка на розыск", // Subject line
-          text: 'Разыскивается ' + req.body.fullname '. Перейдите на сайт Альтернативы для получения подробной информации.', // plain text body
+          text: 'Разыскивается ' + req.body.fullname + '. Перейдите на сайт Альтернативы для получения подробной информации.', // plain text body
           html: 'Разыскивается <b>' + req.body.fullname + '</b>', // html body
 		  attachments: [
 		  {
