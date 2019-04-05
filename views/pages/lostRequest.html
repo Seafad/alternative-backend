@@ -15,51 +15,104 @@
 		</nav>
 		<div class="container mt-3">
 			<form action="/lostRequest" method="POST" encType="multipart/form-data" class="col-12 col-lg-auto border pt-3 pl-3 pr-3 pb-lg-3">
-				<label for="lostInfoGroup" class="h4">Информация о пропавшем</label>
+				<div class="row justify-content-center">
+					<label for="lostInfoGroup" class="h4">Информация о пропавшем</label>
+				</div>
+				<p><span class="text-danger">*</span> - обязательно</p>
 				<div class="form-group" id="lostInfoGroup">
-					<div class="form-group" id="lostFullnameGroup">
-						<label for="fullname" class="h5">1. ФИО пропавшего </label>
-						<small id="fullnameHelpBlock" class="form-text text-muted">Введите ФИО пропавшего (например, Иванов Иван Иванович)</small>
-						<input type="text" name="fullname" id="fullname" class="form-control" aria-describedby="fullnameHelpBlock" placeholder="ФИО пропавшего" required/>
+					<div class="form-group" id="q1">
+						<label for="q1" class="h5">1. ФИО пропавшего<span class="text-danger">*</span></label>
+						<small id="lostFullnameHelpBlock" class="form-text text-muted">Введите ФИО пропавшего <b>Пример:</b> Иванов Иван Иванович</small>
+						<input type="text" name="lostFullname" id="lostFullname" class="form-control" aria-describedby="lostFullnameHelpBlock" placeholder="ФИО пропавшего" required />
 					</div>
-					<div class="form-group" id="lostDateAndLocationGroup">
-						<label for="fullname" class="h5">2. Дата и место рождения пропавшего</label>
+					<div class="form-group" id="q2">
+						<label for="q2" class="h5">2. Дата и место рождения пропавшего<span class="text-danger">*</span></label>
 						<div class="row">
-							<div class="form-group  col-lg-4" id="lostDateGroup">
-								<small id="lostBirthDateHelpBlock" class="form-text text-muted">Введите дату рождения пропавшего</small>
+							<div class="col-lg-4 align-items-end" id="lostDateGroup">
+								<small id="lostBirthDateHelpBlock" class="form-text text-muted">Укажите дату рождения пропавшего</small>
 								<input type="date" id="lostBirthDate" class="form-control" name="lostBirthDate" value="" min="1900-01-01" required>
 							</div>
-							<div class="form-group  col-lg-8" id="lostDateGroup">
-								<small id="lostBirthLocationHelpBlock" class="form-text text-muted">Введите место рождения пропавшего (например, г. Иваново, Ивановской обл)</small>
-								<input type="text" id="lostBirthLocation" class="form-control" name="lostBirthLocation" placeholder="Место рождения пропавшего..." required>
+							<div class="col-lg-8" id="lostDateGroup">
+								<small id="lostBirthLocationHelpBlock" class="form-text text-muted">Введите место рождения пропавшего. <b>Пример:</b> г. Иваново, Ивановской обл</small>
+								<input type="text" id="lostBirthLocation" class="form-control" name="lostBirthLocation" placeholder="Место рождения пропавшего" required>
 							</div>
 						</div>
-						
 					</div>
-					<div class="form-group" id="lostDateAndLocationGroup">
-						<label for="fullname" class="h5">3. Дата пропажи и последнее местонахождение</label>
-						<div class="row">
-							<div class="form-group  col-lg-4" id="lostDateGroup">
-								<small id="lostBirthDateHelpBlock" class="form-text text-muted">Введите дату рождения пропавшего</small>
-								<input type="date" id="lostBirthDate" class="form-control" name="lostBirthDate" value="" min="1900-01-01" required>
+					<div class="form-group" id="q3">
+						<label for="q3" class="h5">3. Дата пропажи и последнее местонахождение<span class="text-danger">*</span></label>
+						<div class="row align-items-end text-justify">
+							<div class="col-lg-4" id="lostDateGroup">
+								<small id="disappearanceDateHelpBlock" class="form-text text-muted">Укажите дату пропажи или последнего выхода на связь</small>
+								<input type="date" id="disappearanceDate" class="form-control" name="disappearanceDate" value="" min="1980-01-01" required>
 							</div>
-							<div class="form-group  col-lg-8" id="lostDateGroup">
-								<small id="lostBirthLocationHelpBlock" class="form-text text-muted">Введите место рождения пропавшего (например, г. Иваново, Ивановской обл)</small>
-								<input type="text" id="lostBirthLocation" class="form-control" name="lostBirthLocation" placeholder="Место рождения пропавшего..." required>
+							<div class="col-lg-8" id="lostDateGroup">
+								<small id="disappearanceLocationHelpBlock" class="form-text text-muted">Укажите, по возможности, наиболее подробно, последнее достоверно известное местонахождение пропавшего человека, сообщённое им/ей самим(ой), или иными свидетелями <b>Пример:</b> г. Москва, Волгоградский проспект, д. 13, общежитие "Василёк" </small>
+								<input type="text" id="disappearanceLocation" class="form-control" name="disappearanceLocation" placeholder="Место пропажи" required>
 							</div>
 						</div>
-						
 					</div>
-					<label for="photo">Фото пропавшего</label>
-					<small id="photoHelpBlock" class="form-text text-muted">Пожалуйста, загрузите файл с фото пропавшего</small>
-					<input type="file" name="photo" id="photo" class="form-control-file" required>
+					<div class="form-group" id="q4">
+						<label for="q4" class="h5">4. Обстоятельства пропажи<span class="text-danger">*</span></label>
+						<small id="lostСircumstancesHelpBlock" class="form-text text-muted text-justify">В свободной форме опишите всё достоверно известные вам обстоятельства пропажи, но только те обстоятельства, которые имеют непосредственное отношение к самому факту пропажи. Иными словами, не стоит перегружать сообщение различного рода теориями, догадками, предположениями, подробностями личной жизни пропавшего человека и т.п., потому что все эти сведения в любом случае не могут быть помещены на ориентировку.</small>
+						<textarea rows="5" id="lostСircumstances" class="form-control" name="lostСircumstances" placeholder="Обстоятельства пропажи" required></textarea>
+					</div>
+					<div class="form-group" id="q5">
+						<label for="q5" class="h5">5. Заявление в полицию<span class="text-danger">*</span></label>
+						<small id="policeFileInfoHelpBlock" class="form-text text-muted text-justify">Укажите, подавали ли вы, или кто-либо иной из близких/родственников, заявление в полицию о розыске пропавшего без вести человека. Если да, то укажите, когда и в какой территориальный отдел полиции было подано заявление, номер КУСП и, если по итогам было возбуждено розыскное дело, то какой следователь его ведёт. <b>Пример:</b> 06.04.2017 в ОВД по Фрунзенскому р-ну, г. Иваново, КУСП-3329, следователь: ст. лейтенант Петров Пётр Петрович</small>
+						<input type="text" id="policeFileInfo" class="form-control" name="policeFileInfo" placeholder="Информация о заявлении" required>
+					</div>
+					<div class="form-group" id="q6">
+						<label for="q6" class="h5">6. Фото пропавшего<span class="text-danger">*</span></label>
+						<small id="lostPhotoHelpBlock" class="form-text text-muted">Пожалуйста, загрузите файл с фото пропавшего</small>
+						<input type="file" name="lostPhoto" id="lostPhoto" class="form-control-file" required>
+					</div>
+					<div class="form-group" id="qPhone">
+						<label for="qPhone" class="h5">Определить местонахождение по телефонному звонку</label>
+						<small id="policePhoneHelpBlock" class="form-text text-muted text-justify">Заполните это поле, если от пропавшего без вести человека поступил телефонный звонок с мобильного номера, но он не смог сообщить своё местонахождение. Существует возможность определить местоположение этого звонка, для этого следователь, ведущий розыскное дело, должен получить разрешение суда и направить запрос в компанию оператора мобильной связи, с чьей симкарты был сделан звонок. Для направления такого запроса необходимо в заявлении на розыск пропавшего указать номер телефона, с которого звонил пропавший, и точную дату и время звонка. <b>Пример:</b> +7 999 123 45 67, 05.04.2017 в 17:28</small>
+						<input type="text" id="policePhoneInfo" class="form-control" name="policePhoneInfo" placeholder="Информация о звонке">
+					</div>					
 				</div>
 				<hr/>
-				<label for="contactPersonGroup" class="h4">Информация о заявитиле</label>
-				<div class="form-group" id="contactPersonGroup">
-				 <label for="email">Ваш Email-адрес</label>
-				 <input type="email" name="email" id="email" class="form-control" placeholder="Ваш email" required/>
-				 <small id="emailHelpBlock" class="form-text text-muted">Введите Ваш email для обратной связи</small>
+				<div class="row justify-content-center">
+					<label for="contactPersonGroup" class="h4">Информация о заявителе</label>
+				</div>
+				<div class="form-group" id="q7">
+					<label for="q7" class="h5">7. Кем Вы приходитесь пропавшему<span class="text-danger">*</span></label>
+						<small id="requesterRelationHelpBlock" class="form-text text-muted"><b>Пример:</b> сестра</small>
+						<input type="text" name="requesterRelation" id="requesterRelation" class="form-control" aria-describedby="requesterRelationHelpBlock" placeholder="" required/>
+				</div>
+				<div class="form-group" id="q8">
+					<label for="q8" class="h5">8. Дата рождения, ФИО<span class="text-danger">*</span></label>
+					<div class="row">
+						<div class="col-lg-4 align-items-end" id="lostDateGroup">
+							<small id="requesterBirthDateHelpBlock" class="form-text text-muted">Укажите Вашу дату рождения</small>
+							<input type="date" id="requesterBirthDate" class="form-control" name="requesterBirthDate" value="" min="1900-01-01" required>
+						</div>
+						<div class="col-lg-8" id="lostDateGroup">
+							<small id="requesterFullnameHelpBlock" class="form-text text-muted">Введите Ваше ФИО. <b>Пример:</b> Иванова Татьяна Ивановна</small>
+							<input type="text" name="requesterFullname" id="requesterFullname" class="form-control" aria-describedby="requesterFullnameHelpBlock" placeholder="Ваше ФИО" required/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group" id="q9">
+					<label for="q9" class="h5">9. Сведения о документе, удостоверяющем личность<span class="text-danger">*</span></label>
+					<small id="requesterPassportHelpBlock" class="form-text text-muted text-justify">Укажите номер паспорта, или любого иного документа (водительские права, военный билет), удостоверяющего вашу личность как заявителя, а так же, кем и когда выдан документ. <b>Пример:</b> паспорт РФ 1234 567890, выдан 30.06.2007 ОВД по Фрунзенскому р-ну, г. Иваново</small>
+					<input type="text" name="requesterPassport" id="requesterPassport" class="form-control" aria-describedby="requesterPassportHelpBlock" placeholder="Сведения о документе, удостоверяющем личность" required />
+				</div>
+				<div class="form-group" id="q10">
+					<label for="q10" class="h5">10. Место жительства<span class="text-danger">*</span></label>
+					<small id="requesterAddressHelpBlock" class="form-text text-muted">Укажите Ваше место жительства. <b>Пример:</b> г. Иваново, ул. Центральная, д. 8, стр. 1, кв. 12</small>
+					<input type="text" name="requesterAddress" id="requesterAddress" class="form-control" aria-describedby="requesterAddressHelpBlock" placeholder="Ваш адрес" required />
+				</div>
+				<div class="form-group" id="q11">
+					<label for="q11" class="h5">11. Контактный телефон<span class="text-danger">*</span></label>
+					<small id="requesterPhoneHelpBlock" class="form-text text-muted">Ваш контактный телефон. <b>Пример:</b> +7 999 765 43 21</small>
+					<input type="tel" name="requesterPhone" id="requesterPhone" class="form-control" aria-describedby="requesterPhoneHelpBlock" placeholder="Ваш номер телефона" required />
+				</div>
+				<div class="form-group" id="q12">
+				<label for="q13" class="h5">11. Дополнительная контактная информация<span class="text-danger">*</span></label>
+				 <input type="text" name="requesterContactInfo" id="requesterContactInfo" class="form-control" placeholder="Дополнительные средства связи"/>
+				 <small id="requesterContactInfoHelpBlock" class="form-text text-muted text-justify">Ваш e-mail, контакты в социальных сетях Если у вас имеются дополнительные средства связи посредством электронной почты или социальных сетей, укажите их здесь. <b>Пример:</b> ivanova.tatiana@mail.ru или ok.ru/profile/123456789012</small>
 				 </br>
 				</div>
 				 
