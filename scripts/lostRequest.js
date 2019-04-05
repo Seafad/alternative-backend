@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const config = require('./config')
 const db = require('./db')
+const nodeMailer = require('nodemailer') // for sending emails
 
 router.get('/', function(req, res) {
-  res.render('pages/missingRequest');
+  res.render('pages/lostRequest');
 });
 
 router.post('/', function (req, res){
@@ -40,8 +42,9 @@ router.post('/', function (req, res){
               return console.log(error);
           }
           console.log('Message %s sent: %s', info.messageId, info.response);
-              res.render('pages/index');
-          });
+		  backURL=req.header('Referer') || '/';
+		  res.redirect(backURL);
+		  });
 });
 
 

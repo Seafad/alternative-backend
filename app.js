@@ -1,12 +1,11 @@
 const express = require('express')
 const path = require('path')
 const config = require('./scripts/config')
-const nodeMailer = require('nodemailer') // for sending emails
 const fileUpload = require('express-fileupload') // for uploading files :D
 
 
 const app = express()
-const missingRequest = require('./scripts/missingRequest');
+const lostRequest = require('./scripts/lostRequest');
 
 // startup
 app
@@ -24,5 +23,5 @@ app
 	}))
 	
 // routes  
-app.get('/', function(req, res){res.redirect('./missingRequest');}) //for debug
-app.use('/missingRequest', missingRequest)
+app.get('/', function(req, res){res.redirect('./lostRequest');}) //for debug
+app.use('/lostRequest', lostRequest)
